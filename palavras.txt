@@ -1,0 +1,8 @@
+Sapateiro
+Cabeleireiro
+Atriz
+Arquiteto
+Piloto
+Desenhador
+Ator
+Agricultor
