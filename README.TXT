@@ -8,9 +8,16 @@ O jogo busca as palavras no arquivo externo "palavras.txt" e joga numa lista pyt
 
 Com o random criado, o jogo pega esse número e usa como index da lista. Dessa forma a palavra é escolhida.
 
+O arquivo de palavras.txt não pode ter palavras acentuadas ou com caracteres especiais!
 
-Regra:
+
+Regras:
 
 Número de jogadas é baseado no tamanho do palavra.
 
 A cada letra informada o jogo verifica se a palavra já foi formada e assim encerra. Do contráio o jogo vai verificar se o número de jogadas já chegou ao final.
+
+
+Notas:
+
+Na próxima atualização será feito o tratamento de palavras
