@@ -1,49 +1,33 @@
-from funcoes import ler_arquivo
-import random
-import os
+from create_secret_word import create_secret_word
 
-os.system("cls")
+"""Inicia o jogo e faz as verificações a cada tentativa.
+   Analisa se a palavra secreta foi preenchida
+   Verifica se o número de tentativas esgotou 
+"""
+def game():
+    """ Armazena a palavra aleatória e secreta gerada pela função create_secret_word a cada novo game"""
+    random_word, secret_word = create_secret_word()
 
-# Pega o retorno a função ler_arquivo e armazena na varáivel lista
-lista = ler_arquivo()
+    print(secret_word)
+    attempts = 1
 
-# Pega um número aleatório baseado no tamanho da lista de palavras
-numb = random.randint(0, len(lista))
+    for i in range(len(random_word) + 1):
 
-# Pega uma palavra com o número aleatório e armazena na palavra aleatória
-palavra_aleatoria = str(lista[numb]).casefold()
-palavra_secreta = []
+        char = input("Digite uma letra:").casefold()
 
-# print(palavra_aleatoria)
+        index = [index for index, item in enumerate(random_word) if item == char]
+        
+        for i in index:
+            secret_word[i] = char
 
-# Transforma a palavra aletória em palavra secreta com "_" ocupando o index de acordo com o tamanho da palavra aleatória
-for letra in range(len(palavra_aleatoria)):
-    palavra_secreta.append("_")
-
-print(palavra_secreta)
-
-contador = 1
-for i in range(len(palavra_aleatoria)):
-
-    letra = input("Digite uma letra:")
-    letra = letra.casefold()
-
-    if letra in palavra_aleatoria:
-        for i in range(len(palavra_aleatoria)):
-            if letra == palavra_aleatoria[i]:
-                palavra_secreta[i] = letra
-        # Verifica se a palavra já foi preenchida
-        if "_" not in palavra_secreta:
-
-            print("\n", palavra_secreta)
-            print("Parabéns você acertou a palavra secreta!")
+        if "_" not in secret_word:
+            print(f"\nPalavra secreta: {random_word} \nParabéns você acertou")
             break
+    
+        if attempts == len(secret_word) + 1:
+            print(f"\nNão acertou a palavra secreta! Palavra secreta: {random_word}")
+            break
+        
+        attempts += 1
 
-    # Verifica se chegamos ao final das tentivas e a palavra não foi preenchida
-    if contador == len(palavra_secreta):
-        print("\nNão acertou a palavra secreta!!!")
-        print(f"A palavra secreta era: {palavra_aleatoria}")
-        break
-    contador += 1
-
-    print(palavra_secreta)
+        print(secret_word)
